@@ -1,0 +1,1 @@
+Variables with bash testbed
