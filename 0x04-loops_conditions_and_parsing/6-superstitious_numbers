@@ -6,15 +6,15 @@ while [ $count -le 20 ]; do
     case $count in
         4)
             echo "4"
-            echo "and then bad luck from China"
+            echo "bad luck from China"
             ;;
         9)
             echo "9"
-            echo "and then bad luck from Japan"
+            echo "bad luck from Japan"
             ;;
         17)
             echo "17"
-            echo "and then bad luck from Italy"
+            echo "bad luck from Italy"
             ;;
         *)
             echo $count
