@@ -13,4 +13,4 @@ while [ $hour -lt 12 ]; do
     done
     ((hour++))
 
-done
+done | head -n 70
