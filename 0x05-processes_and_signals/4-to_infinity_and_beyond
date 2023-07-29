@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#print with sleep intervals
+# print with sleep intervals
 
 while true; do
    echo "To Infinity and beyond"
