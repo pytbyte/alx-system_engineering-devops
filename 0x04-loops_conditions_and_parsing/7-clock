@@ -3,7 +3,7 @@
 hour=0
 
 while [ $hour -lt 12 ]; do
-    minute=0
+    minute=1
     echo "hour: $hour"
     while [ $minute -lt 60 ]; do
         echo "$minute"
@@ -13,4 +13,4 @@ while [ $hour -lt 12 ]; do
     done
     ((hour++))
 
-done | head -n 70
+done
