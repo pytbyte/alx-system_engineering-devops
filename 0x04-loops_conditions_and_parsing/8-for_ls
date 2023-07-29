@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# ls using for loop
-
+# ls using into list
 
 for file in *; do
     if [ -f "$file" ] && [[ "$file" != .* ]]; then
