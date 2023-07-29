@@ -2,15 +2,14 @@
 #displays clock.
 hour=0
 
-while [ $hour -lt 12 ]; do
+while [ $hour -le 12 ]; do
     minute=1
     echo "hour: $hour"
     while [ $minute -lt 60 ]; do
         echo "$minute"
-        if [ $minute -le 59 ]; then
-            ((minute++))
-        fi
+        minute=$((minute + 1))
+       
     done
-    ((hour++))
+    hour=$((hour +1))
 
 done
