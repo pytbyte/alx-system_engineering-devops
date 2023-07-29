@@ -3,6 +3,6 @@
 
 file="/etc/passwd"
 
-while Target= read -r line; do
+while IFS= read -r line; do
   echo "$line" | cut -d ':' -f1,3,6
 done < "$file"
