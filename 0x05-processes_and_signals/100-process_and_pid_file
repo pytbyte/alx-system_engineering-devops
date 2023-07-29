@@ -1,0 +1,28 @@
+#!/bin/bash
+
+pid_file="/var/run/myscript.pid"
+
+function cleanup {
+    echo "Deleting PID file and terminating the script."
+    rm -f "$pid_file"
+    exit 0
+}
+
+function handle_sigint {
+    echo "Y U no love me?!"
+}
+
+function handle_sigterm {
+    echo "I hate the kill command"
+}
+
+trap cleanup SIGQUIT SIGTERM
+trap handle_sigint SIGINT
+trap handle_sigterm SIGTERM
+
+echo $$ > "$pid_file"
+
+while true; do
+    echo "To infinity and beyond"
+    sleep 1
+done
