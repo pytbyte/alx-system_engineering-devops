@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-keyword = /hb.n/
+keyword = /hbt*n/
 input = ARGV[0]
 
 if keyword.match(input)
