@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
-keyword = /hbt*n/
+keyword = /hbt+n/i
 input = ARGV[0]
 
-if keyword.match(input)
+if keyword.any
     puts "match found"
 else
     puts "match not found"
