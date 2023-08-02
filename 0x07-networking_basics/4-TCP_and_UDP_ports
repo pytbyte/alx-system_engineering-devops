@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#displays listening ports pid and program binded to
+
+sudo netstat -lp
