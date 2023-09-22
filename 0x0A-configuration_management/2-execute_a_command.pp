@@ -1,7 +1,5 @@
 # Puppet Manifest to kill a process by its name using exec
-exec { 'killmenow':
-  command     => 'pkill killmenow',
-  path        => '/bin/',
-  refreshonly => true,
-  onlyif      => 'pgrep killmenow',
-}
+exec { 'pkill killmenow' :
+    path    => '/bin/',
+    command => 'pkill killmenow',
+    }
