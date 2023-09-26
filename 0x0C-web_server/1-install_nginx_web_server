@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
+# Install nginx on you web-01 server
 
-# Update the package list and install Nginx
 sudo apt-get -y update
 sudo apt-get -y install nginx
 
-# Allow incoming traffic on port 80 (HTTP) using UFW (Uncomplicated Firewall)
+# listen on port 80
 sudo ufw allow 'Nginx HTTP'
 
-# Create a custom HTML file with "Hello World!" message
+#create web page with custom text
 sudo sh -c 'echo "Hello World!" > /var/www/html/index.nginx-debian.html'
-# Start the Nginx service
-sudo systemctl start nginx
+sudo service nginx start
