@@ -7,6 +7,6 @@ new_servername="server_name _;\n\n\tlocation /redirect_me {\n\t\treturn 301 http
 sudo apt-get -y update
 sudo apt-get -y install nginx
 sudo sh -c 'echo "Hello World!" > /var/www/html/index.nginx-debian.html'
-sudo sed -i -e "s|$old_servername|$newstr|" /etc/nginx/sites-enabled/default
+sudo sed -i -e "s|$old_servername|$new_servername|" /etc/nginx/sites-enabled/default
 
 sudo service nginx start
