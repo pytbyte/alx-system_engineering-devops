@@ -24,5 +24,5 @@ file_line { 'handle_redirection':
 exec { 'restart_nginx':
   command     => '/usr/sbin/service nginx restart',
   refreshonly => true,
-  subscribe   => File_line['add_redirect'],
+  subscribe   => File_line['handle_redirection'],
 }
