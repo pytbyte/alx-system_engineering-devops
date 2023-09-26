@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# Define variables for old and new Server name
+OLD_SERVER_NAME="server_name _;"
+NEW_SERVER_NAME="server_name _;\n\n\tlocation /redirect_me {\n\t\treturn 301 https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4;\n\t}"
+
+# Update the package list and install Nginx
+sudo apt-get -y update
+sudo apt-get -y install nginx
+
+# Create a simple HTML file
+sudo sh -c 'echo "Hello World!" > /var/www/html/index.nginx-debian.html'
+
+# Modify the Nginx default configuration to include the redirection
+sudo sed -i -e "s|$OLD_SERVER_NAME|$NEW_SERVER_NAME|" /etc/nginx/sites-enabled/default
+
+# Restart the Nginx service to apply the configuration changes
+sudo service nginx restart
