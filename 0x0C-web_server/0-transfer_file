@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Check if all required parameters are provided
 if [ "$#" -ne 4 ]; then
@@ -16,10 +16,8 @@ SSH_KEY="$4"
 SSH_OPTIONS="-o StrictHostKeyChecking=no"
 
 # Transfer the file using scp
-scp $SSH_OPTIONS -i "$SSH_KEY" "$PATH_TO_FILE" "$USERNAME@$IP:~/"
-
 # Check the exit status of the scp command
-if [ $? -eq 0 ]; then
+if scp "$SSH_OPTIONS" -i "$SSH_KEY" "$PATH_TO_FILE" "$USERNAME@$IP:~/"; then
   echo "File successfully transferred to $IP"
 else
   echo "Failed to transfer file to $IP"
