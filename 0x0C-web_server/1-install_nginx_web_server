@@ -8,13 +8,6 @@ sudo apt-get -y install nginx
 sudo ufw allow 'Nginx HTTP'
 
 # Create a custom HTML file with "Hello World!" message
-echo "Hello World!" | sudo tee /var/www/html/index.html > /dev/null
-
+sudo sh -c 'echo "Hello World!" > /var/www/html/index.nginx-debian.html'
 # Start the Nginx service
 sudo systemctl start nginx
-
-# Enable Nginx to start on boot (optional)
-sudo systemctl enable nginx
-
-# Display a message indicating that Nginx is installed and running
-echo "Nginx has been installed and is running."
