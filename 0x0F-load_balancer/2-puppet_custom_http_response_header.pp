@@ -9,7 +9,7 @@ package {'nginx':
   require => Exec['get_updates'],
 }
 
-$custom_header = "         add_header X-Served-By \"${::hostname}\";"
+$custom_header = "add_header X-Served-By \"${::hostname}\";"
 
 exec {'add_custom_header':
 command  => "echo '${custom_header}' | sudo sed -i '50r /dev/stdin' /etc/nginx/sites-enabled/default",
