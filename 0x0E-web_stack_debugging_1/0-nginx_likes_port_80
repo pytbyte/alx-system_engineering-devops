@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
 #Bash script that configures a server to listening on port 80
 
-sudo apt-get -y update
-sudo apt-get -y install nginx
-
-# listen on port 80
 sudo ufw allow 'Nginx HTTP'
-
-#create web page with custom text
 sudo service nginx start
