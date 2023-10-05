@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 #Bash script that configures a server to listening on port 80
 
-sudo ufw allow 'Nginx HTTP'
+sed -i s/8080/80/ /etc/nginx/sites-enabled/default
 sudo service nginx start
