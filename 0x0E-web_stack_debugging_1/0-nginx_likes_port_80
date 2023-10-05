@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-#listening on port 80
+# ngunx port 80
 sed -i s/8080/80/ /etc/nginx/sites-enabled/default
-sudo service nginx start
+service nginx restart
