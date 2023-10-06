@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-# ngunx port 80
-sed -i s/8080/80/ /etc/nginx/sites-enabled/default
+# Nginx on 80
+sed -i 's/[0-9]\+ default_server/80 default_server/' /etc/nginx/sites-enabled/default
 service nginx restart
