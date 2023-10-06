@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#Double the number of webservers
+# display information about subdomains.
 
 if [ "$#" -eq 1 ]; then
     echo "$(dig www.$1 | awk '/ANSWER SECTION:/ {getline; print "The subdomain www is a "$4" record and points to "$5}')"
