@@ -1,34 +1,12 @@
 #!/usr/bin/env bash
-
-get_dns_info() {
-    local domain="$1"
-    local subdomain="$2"
-
-    # fetch DNS information (man dig)
-    local dns_data
-    dns_data=$(dig +short "$subdomain.$domain" | awk '/ANSWER SECTION:/ {getline; print $4, $5}')
-
-    # Print the result
-    if [ -n "$dns_data" ]; then
-        echo "The subdomain $subdomain is $dns_data"
-    else
-        echo "The subdomain $subdomain has no DNS record"
-    fi
-}
+#Double the number of webservers
 
 if [ "$#" -eq 1 ]; then
-    subdomains=("www" "lb-01" "web-01" "web-02")
-    domain="$1"
-
-    for subdomain in "${subdomains[@]}"; do
-        get_dns_info "$domain" "$subdomain"
-    done
+    echo "$(dig www.$1 | awk '/ANSWER SECTION:/ {getline; print "The subdomain www is a "$4" record and points to "$5}')"
+    echo "$(dig lb-01.$1 | awk '/ANSWER SECTION:/ {getline; print "The subdomain lb-01 is a "$4" record and points to "$5}')"
+    echo "$(dig web-01.$1 | awk '/ANSWER SECTION:/ {getline; print "The subdomain web-01 is a "$4" record and points to "$5}')"
+    echo "$(dig web-02.$1 | awk '/ANSWER SECTION:/ {getline; print "The subdomain web-02 is a "$4" record and points to "$5}')"
 elif [ "$#" -eq 2 ]; then
-    domain="$1"
-    subdomain="$2"
-
-    get_dns_info "$domain" "$subdomain"
-else
-    echo "Usage: $0 <domain> [subdomain]"
-    exit 1
+    subdomain=$2
+    echo "$(dig $subdomain.$1 | awk '/ANSWER SECTION:/ {getline; print "The subdomain '"$subdomain"' is a "$4" record and points to "$5}')"
 fi
