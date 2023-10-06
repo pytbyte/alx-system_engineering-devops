@@ -1,12 +1,30 @@
 #!/usr/bin/env bash
-#Double the number of webservers
+# shellcheck disable=SC2086
+# Display information about subdomains
 
-if [ "$#" -eq 1 ]; then
-    echo "$(dig www.$1 | awk '/ANSWER SECTION:/ {getline; print "The subdomain www is a "$4" record and points to "$5}')"
-    echo "$(dig lb-01.$1 | awk '/ANSWER SECTION:/ {getline; print "The subdomain lb-01 is a "$4" record and points to "$5}')"
-    echo "$(dig web-01.$1 | awk '/ANSWER SECTION:/ {getline; print "The subdomain web-01 is a "$4" record and points to "$5}')"
-    echo "$(dig web-02.$1 | awk '/ANSWER SECTION:/ {getline; print "The subdomain web-02 is a "$4" record and points to "$5}')"
-elif [ "$#" -eq 2 ]; then
-    subdomain=$2
-    echo "$(dig $subdomain.$1 | awk '/ANSWER SECTION:/ {getline; print "The subdomain '"$subdomain"' is a "$4" record and points to "$5}')"
+display_info() {
+    local domain="$1"
+    local subdomain="$2"
+    dig_result=$(dig "$subdomain.$domain" | awk '/ANSWER SECTION:/{getline; printf "The subdomain %s is a %s record and points to %s\n", subdomain, $4, $5}' subdomain="$subdomain")
+    echo "$dig_result"
+}
+
+main() {
+    local input_domain="$1"
+    local input_subdomain="$2"
+
+    subdomains=("www" "lb-01" "web-01" "web-02")
+
+    for sub in "${subdomains[@]}"; do
+        if [ -z "$input_subdomain" ] || [ "$input_subdomain" == "$sub" ]; then
+            display_info "$input_domain" "$sub"
+        fi
+    done
+}
+
+if [ "$#" -lt 1 ]; then
+    echo "Usage: $0 <domain> [subdomain]"
+    exit 1
 fi
+
+main "$@"
