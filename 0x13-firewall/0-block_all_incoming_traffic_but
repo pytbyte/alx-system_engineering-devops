@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # UFW Configuration for web-01
 # Configure UFW to block all incoming traffic, except for SSH (port 22), HTTPS (port 443), and HTTP (port 80).
 
