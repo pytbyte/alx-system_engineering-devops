@@ -1,0 +1,24 @@
+#!/src/bin/env bash
+# Specify the PGP public key file name
+key_file="signature.key"
+
+# Add the MySQL GPG key from the local file
+sudo apt-key add $key_file
+
+# Add the MySQL APT repository
+sudo sh -c 'echo "deb http://repo.mysql.com/apt/ubuntu bionic mysql-5.7" >> /etc/apt/sources.list.d/mysql.list'
+
+# Update the package list
+sudo apt-get update
+
+# Install MySQL 5.7
+sudo apt-get install -f mysql-client=5.7* mysql-community-server=5.7* mysql-server=5.7*
+
+# Remove the MySQL APT configuration file (optional)
+sudo rm /etc/apt/sources.list.d/mysql.list
+
+# Start the MySQL service
+sudo service mysql start
+
+# Secure the MySQL installation (set root password, remove test database, etc.)
+sudo mysql_secure_installation
