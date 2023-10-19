@@ -1,0 +1,21 @@
+#/usr/bin/env bash
+#create a user and password for both MySQL databases.
+
+# MySQL credentials
+MYSQL_USER="root"
+MYSQL_PASSWORD="TeamP354!"
+MYSQL_HOST="localhost"
+
+
+# MySQL user and password to be created
+NEW_USER="holberton_user"
+
+# Create MySQL user and grant privileges
+create_user_and_grant_privileges() {
+    mysql -e "CREATE USER '$NEW_USER'@'localhost' IDENTIFIED BY 'projectcorrection280hbtn';"
+    mysql -e "GRANT REPLICATION CLIENT ON *.* TO '$NEW_USER'@'localhost';"
+    mysql -e "FLUSH PRIVILEGES;"
+}
+
+# Execute the function for web-01
+create_user_and_grant_privileges
