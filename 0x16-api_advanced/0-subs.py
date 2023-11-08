@@ -16,6 +16,6 @@ def number_of_subscribers(subreddit):
         subs = data.get('data', {}).get('subscribers', 0)
 
         return subs
-    
+
     else:
         return 0
