@@ -3,8 +3,11 @@
 import requests
 
 
-def count_words_in_hot_posts(subreddit, words_to_count, after=None, word_counts={}):
-    """Prints counts of specified words found in hot posts of a given subreddit.
+def count_words_in_hot_posts(subreddit,
+                             words_to_count,
+                             after=None,
+                             word_counts={}):
+    """Prints counts of specified words of a given subreddit.
 
     Args:
         subreddit (str): The subreddit to search.
@@ -44,13 +47,17 @@ def count_words_in_hot_posts(subreddit, words_to_count, after=None, word_counts=
         # Check if there are more pages (pagination) and continue the recursion
         after = data.get('data', {}).get('after')
         if after:
-            return count_words_in_hot_posts(subreddit, words_to_count, after, word_counts)
+            return count_words_in_hot_posts(subreddit,
+                                            words_to_count,
+                                            after,
+                                            word_counts)
 
         if len(word_counts) == 0:
             return
 
         # If no more pages, print the sorted results
-        sorted_word_counts = sorted(word_counts.items(), key=lambda x: (-x[1], x[0]))
+        sorted_word_counts = sorted(word_counts.items(),
+                                    key=lambda x: (-x[1], x[0]))
         for word, count in sorted_word_counts:
             print("{}: {}".format(word, count))
 
