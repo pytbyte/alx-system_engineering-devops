@@ -1,8 +1,12 @@
 # Job Listing Platform Outage - Postmortem
 
+<p align="center">
+   <img src="two.jpg" alt="Porgram outage" width="300" height="200">
+</p>
+
+
 This postmortem emphasizes the importance of routine configuration checks, robust monitoring, and effective communication to prevent and address outages on our job listing platform. The outlined measures aim to fortify the system against similar incidents, ensuring a resilient and reliable user experience for both job seekers and employers.
 
-![Platform Outage](two.jpg)
 
 
 ## Issue Summary
