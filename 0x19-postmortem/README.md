@@ -1,7 +1,7 @@
 # Job Listing Platform Outage - Postmortem
 
 <p align="center">
-   <img src="two.jpg" alt="Porgram outage" width="300" height="200">
+   <img src="two.jpg" alt="Porgram outage" width="600" height="600">
 </p>
 
 
