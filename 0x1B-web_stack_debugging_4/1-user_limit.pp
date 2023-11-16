@@ -1,6 +1,6 @@
-#  holberton user
-exec { 'replace_initial_limit':
-  command  => 'sed -i "s/holberton initial nofile 5/holberton initial nofile 5000/" /etc/security/limits.conf',
+# increase max open files for holberton user
+exec { 'replace_hard_limit':
+  command  => 'sed -i "s/holberton hard nofile 5/holberton hard nofile 5000/" /etc/security/limits.conf',
   provider => 'shell'
 }
 exec { 'replace_soft_limit':
